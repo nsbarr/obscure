@@ -44,8 +44,8 @@ class GameViewController: UIViewController {
             skView.ignoresSiblingOrder = true
             
             /* Set the scale mode to scale to fit the window */
-            println("width:\(skView.bounds.size.width)")
-            println("height:\(skView.bounds.size.height)")
+    //        println("width:\(skView.bounds.size.width)")
+    //        println("height:\(skView.bounds.size.height)")
             
             
             //gameBoardScene.vc = self

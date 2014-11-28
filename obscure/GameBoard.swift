@@ -145,7 +145,7 @@ class GameBoard: SKScene {
         let foo = String(guessArray)
         if guessArray == theWordArray {
             println("you win")
-            self.animateGuess()
+            experimentArray.append(guessArea)
             vc.timer = timerLabel.text
             let winScene = YouWin()
             
