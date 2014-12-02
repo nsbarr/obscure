@@ -37,12 +37,14 @@ class GameBoard: SKScene {
     var timesecond = Int()
     var vc = GameViewController()
     var experimentArray:[SKSpriteNode] = []
+    var deleteButton = SKSpriteNode()
     
     
     
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        
         self.scaleMode = .AspectFill
         self.size = CGSizeMake(750,1334)
         self.backgroundColor = tileFontColor
@@ -51,8 +53,39 @@ class GameBoard: SKScene {
         tileHeight = tileWidth - 20
         tileFontSize = tileHeight - 40.0
         
+        var path = NSBundle.mainBundle().pathForResource("everyfourletterword", ofType: "txt")
+        let content = NSString(contentsOfFile: path!, encoding: NSUTF8StringEncoding, error: nil)
+        let upperContent = content!.uppercaseString
+        wordArray = upperContent.componentsSeparatedByString("\n")
         
+        var gameMode = self.userData?.objectForKey("gameMode")! as Int
+        println(gameMode)
         
+        if (gameMode == 1) {
+            println("singleplayer mode")
+            self.generateKeyboard()
+            self.generateSubmitButtonWithText("Guess")
+            self.generateRandomPassword()
+            self.generateTimer()
+            
+        }
+        else if (gameMode == 2) {
+            println("multiplayer mode")
+            self.generateKeyboard()
+            self.generateSubmitButtonWithText("Create")
+            //add "Create MasterPass" text
+            
+        }
+        else {
+            println("error")
+        }
+
+        self.createGuessArea()
+        self.createDeleteButton()
+        
+    }
+    
+    func generateKeyboard(){
         var letterYPosition = gutterSpacing + tileHeight/2
         for rowOfLetters in letters {
             var letterXPosition = gutterSpacing + tileWidth/2
@@ -64,29 +97,22 @@ class GameBoard: SKScene {
             letterYPosition = letterYPosition + tileHeight + tileSpacing
         }
         
-        var path = NSBundle.mainBundle().pathForResource("everyfourletterword", ofType: "txt")
-        
-        let content = NSString(contentsOfFile: path!, encoding: NSUTF8StringEncoding, error: nil)
-        let upperContent = content!.uppercaseString
-        wordArray = upperContent.componentsSeparatedByString("\n")
-        let randomIndex = Int(arc4random_uniform(UInt32(wordArray.count)))
-        theWord = wordArray[randomIndex]
-        
-        vc.passcode = theWord
-        println(vc.passcode)
-        
+    }
+    func generateSubmitButtonWithText(text:String){
         let submitButton = SKSpriteNode(color: sceneBackgroundColor, size:CGSizeMake(tileWidth*2+tileSpacing,tileHeight))
         submitButton.position = CGPoint(x: self.frame.width-(submitButton.size.width/2+gutterSpacing), y: gutterSpacing+submitButton.size.height/2)
         submitButton.color = UIColor.blueColor()
-        submitButton.name = "guess"
+        submitButton.name = text
         let goText = SKLabelNode(fontNamed: tileFontName)
-        goText.text = "Guess"
+        goText.text = text
         goText.verticalAlignmentMode = .Center
         goText.fontSize = tileFontSize
         goText.fontColor = UIColor.whiteColor()
         self.addChild(submitButton)
         submitButton.addChild(goText)
-        
+    }
+    
+    func generateTimer(){
         
         timerLabel.fontName = tileFontName
         timerLabel.fontSize = 60.0
@@ -95,7 +121,6 @@ class GameBoard: SKScene {
         timerLabel.position = CGPointMake(self.frame.midX, gutterSpacing)
         self.addChild(timerLabel)
         
-        self.createGuessArea()
         
         
         var actionrun = SKAction.runBlock({
@@ -108,8 +133,6 @@ class GameBoard: SKScene {
         timerLabel.runAction(SKAction.repeatActionForever(SKAction.sequence([actionwait,actionrun])))
         
 
-        
-        
     }
     
     func createGuessArea() {
@@ -117,6 +140,22 @@ class GameBoard: SKScene {
         guessArea.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
         guessArea.name = "guessArea"
         self.addChild(guessArea)
+    }
+    
+    func createDeleteButton(){
+        deleteButton = SKSpriteNode(color: UIColor.grayColor(), size: CGSizeMake(60,60))
+        deleteButton.position = CGPointMake(guessArea.frame.minX, guessArea.position.y)
+        deleteButton.name = "delete"
+        self.addChild(deleteButton)
+    }
+    
+    func generateRandomPassword() {
+        let randomIndex = Int(arc4random_uniform(UInt32(wordArray.count)))
+        theWord = wordArray[randomIndex]
+        
+        vc.passcode = theWord
+        println(vc.passcode)
+
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -128,7 +167,7 @@ class GameBoard: SKScene {
             for touchedNode in touchedNodes{
                 let nodeName: String? = touchedNode.name
                 
-                if nodeName == "tile" || nodeName == "guess" {
+                if nodeName == "tile" || nodeName == "Guess" || nodeName == "Create" {
                     lastTappedTile = touchedNode as SKSpriteNode
                     lastTappedTile.setScale(0.8)
                 }
@@ -157,16 +196,11 @@ class GameBoard: SKScene {
     
             self.view?.presentScene(winScene, transition: SKTransition.crossFadeWithDuration(0.4))
             
-//            SKView *spriteView = (SKView *) self.view;
-//            SKScene *currentScene = [spriteView scene];
-//            SKScene *newScene = [MySceneClass scene];
-//            [newScene.userData setObject:[currentScene.userData objectForKey:@"score"] forKey:@"score"];
-//            [spriteView presentScene:newScene];
         }
         
         else if (find(wordArray, foo) == nil){
             println("not a word")
-            self.throwErrorMessage()
+            self.throwMessageWithText("Has to be a 4 letter word!")
         }
         else {
             println("you don't win")
@@ -175,16 +209,16 @@ class GameBoard: SKScene {
     }
     
     
-    func throwErrorMessage() {
+    func throwMessageWithText(text:String) {
         let getOutDaWay = SKAction.moveByX(2000.0, y: 0.0, duration: 0.2)
-        let error = SKLabelNode(text: "Has to be a 4 letter word!")
+        let message = SKLabelNode(text: text)
         guessArea.runAction(getOutDaWay, completion: { () -> Void in
 
-            error.position = CGPointMake(self.frame.midX,self.frame.midY)
-            error.fontSize = 40.0
-            error.fontColor = self.tileColor
-            error.fontName = self.tileFontName
-            self.addChild(error)
+            message.position = CGPointMake(self.frame.midX,self.frame.midY)
+            message.fontSize = 40.0
+            message.fontColor = self.tileColor
+            message.fontName = self.tileFontName
+            self.addChild(message)
             self.clearGuessArea()
 
         })
@@ -192,7 +226,7 @@ class GameBoard: SKScene {
         let waitAndSlideBack = SKAction.sequence([wait,getOutDaWay.reversedAction()])
         
         guessArea.runAction(waitAndSlideBack, completion: { () -> Void in
-            error.removeFromParent()
+            message.removeFromParent()
         })
         
     }
@@ -317,8 +351,25 @@ class GameBoard: SKScene {
         if let letter = lastTappedTile.childNodeWithName("letter") as? SKLabelNode {
             self.generateGuessLetterFrom(letter)
         }
-        else if lastTappedTile.name == "guess" {
+        else if lastTappedTile.name == "Guess" {
             self.evaluateGuess()
+        }
+        else if lastTappedTile.name == "Create" {
+            theWord = String(guessArray)
+            println(theWord)
+            if (find(wordArray, theWord) == nil){
+                println("not a word")
+                self.throwMessageWithText("Has to be a 4 letter word!")
+                self.clearGuessArea()
+            }
+            else {
+                vc.passcode = theWord
+                self.throwMessageWithText("Saved! Now pass it to a friend.")
+                self.childNodeWithName("Create")?.removeFromParent()
+                self.generateSubmitButtonWithText("Guess")
+                self.generateTimer()
+            }
+            
         }
         lastTappedTile = SKSpriteNode()
     }
@@ -366,9 +417,12 @@ class GameBoard: SKScene {
     
     
     override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
+        if guessArray.count > 0 {
+            deleteButton.alpha = 0
+        }
+        else {
+            deleteButton.alpha = 0
+        }
 
-        
-      //  timerLabel.text = NSString(format: "%2.2f", elapsedTime)
     }
 }

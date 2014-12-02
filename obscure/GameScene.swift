@@ -18,18 +18,31 @@ class GameScene: SKScene {
         println("hello Scene")
         
         self.backgroundColor = sceneBackgroundColor
-        var playerVPlayer = MenuButton(frame: CGRect(x:(view.frame.width-200)/2,y:view.frame.height/2+100,width:200,height:40))
-        playerVPlayer.setTitle("Word of the Day", forState: .Normal)
-        playerVPlayer.addTarget(self, action: Selector("pvpButtonPressed:"), forControlEvents: .TouchUpInside)
-        view.addSubview(playerVPlayer)
+        var wordOfTheDayButton = MenuButton(frame: CGRect(x:(view.frame.width-300)/2,y:view.frame.height/2+100,width:300,height:40))
+        wordOfTheDayButton.setTitle("Guess the Word of the Day", forState: .Normal)
+        wordOfTheDayButton.tag = 1
+        wordOfTheDayButton.addTarget(self, action: Selector("buttonPressed:"), forControlEvents: .TouchUpInside)
+        view.addSubview(wordOfTheDayButton)
         
-        
+        var multiplayerButton = MenuButton(frame: CGRect(x:(view.frame.width-300)/2,y:view.frame.height/2,width:300,height:40))
+        multiplayerButton.setTitle("Play with a Friend", forState: .Normal)
+        multiplayerButton.tag = 2
+        multiplayerButton.addTarget(self, action: Selector("buttonPressed:"), forControlEvents: .TouchUpInside)
+        view.addSubview(multiplayerButton)
     }
     
-    func pvpButtonPressed(sender: MenuButton){
+
+    func buttonPressed(sender: MenuButton){
         for subview in self.view?.subviews as [UIView] {
             subview.removeFromSuperview()
         }
-        self.view?.presentScene(GameBoard(), transition: SKTransition.crossFadeWithDuration(1))
+        var data: NSMutableDictionary = ["gameMode":sender.tag]
+        let gameBoard = GameBoard()
+        gameBoard.userData = data
+        println(data)
+        self.view?.presentScene(gameBoard, transition: SKTransition.crossFadeWithDuration(1))
+        
     }
+    
+    
 }

@@ -37,39 +37,55 @@ class YouWin: SKScene {
         
         
         
-        backgroundNode.size = self.size
-        backgroundNode.name = "backgroundNode"
-        self.addChild(backgroundNode)
+//        backgroundNode.size = self.size
+//        backgroundNode.name = "backgroundNode"
+//        self.addChild(backgroundNode)
         
-        let theWord = SKLabelNode(fontNamed: "Arial")
+        
+//        let menuThing = SKSpriteNode(color: UIColor.blackColor(), size: CGSizeMake(self.frame.width/2,self.frame.width/2))
+//        menuThing.alpha = 0.8
+//        menuThing.position = CGPointMake(self.frame.midX,self.frame.midY)
+//        self.addChild(menuThing)
+        
+        let theWord = SKLabelNode(fontNamed: "ArialRoundedMTBold")
         theWord.text = self.userData?.objectForKey("word")! as String
         theWordText = theWord.text
         theWord.position = CGPointMake(self.frame.midX,self.frame.midY)
         theWord.fontColor = UIColor.whiteColor()
-        theWord.fontSize = 60.0
+        theWord.fontSize = 80.0
         self.addChild(theWord)
         
-        let timer = SKLabelNode(fontNamed: "Arial")
+        let timer = SKLabelNode(fontNamed: "ArialRoundedMTBold")
         timer.text = self.userData?.objectForKey("timer")! as String
-        timer.position = CGPointMake(self.frame.midX,self.frame.midY-100)
+        timer.position = CGPointMakeCGPointMake(self.frame.midX-40,self.frame.midY-100)
         timer.fontColor = UIColor.whiteColor()
         timer.fontSize = 60.0
         self.addChild(timer)
         
-        var arrayOfPlays = self.userData?.objectForKey("plays") as [SKSpriteNode]
-        var yPosition:CGFloat = 0.0
-        arrayOfPlays = arrayOfPlays.reverse()
-        for var i=0; i<arrayOfPlays.count; i++ {
-            arrayOfPlays[i].removeFromParent()
-            arrayOfPlays[i].setScale(2.0)
-            arrayOfPlays[i].position = CGPointMake(self.frame.midX, yPosition+arrayOfPlays[i].frame.height/2)
-            backgroundNode.addChild(arrayOfPlays[i])
-            yPosition = yPosition + arrayOfPlays[i].frame.height
-        }
+        let numberOfGuesses = SKLabelNode(fontNamed: "ArialRoundedMTBold")
+        numberOfGuesses.text = self.userData?.objectForKey("plays")?.count
+        numberOfGuesses.position = CGPointMakeCGPointMake(self.frame.midX+40,self.frame.midY-100)
+        numberOfGuesses.fontColor = UIColor.whiteColor()
+        numberOfGuesses.fontSize = 60.0
+        self.addChild(numberOfGuesses)
+        
+        
+        
+//        var arrayOfPlays = self.userData?.objectForKey("plays") as [SKSpriteNode]
+//        var yPosition:CGFloat = 0.0
+//        arrayOfPlays = arrayOfPlays.reverse()
+//        for var i=0; i<arrayOfPlays.count; i++ {
+//            arrayOfPlays[i].removeFromParent()
+//            arrayOfPlays[i].setScale(2.0)
+//            arrayOfPlays[i].position = CGPointMake(self.frame.midX, yPosition+arrayOfPlays[i].frame.height/2)
+//            backgroundNode.addChild(arrayOfPlays[i])
+//            yPosition = yPosition + arrayOfPlays[i].frame.height
+//        }
         
         
         var playAgainButton = MenuButton(frame: CGRect(x:(view.frame.width-200)/2,y:view.frame.height/2+200,width:200,height:40))
         playAgainButton.setTitle("Again", forState: .Normal)
+        playAgainButton.alpha = 0.8
         playAgainButton.addTarget(self, action: Selector("pvpButtonPressed:"), forControlEvents: .TouchUpInside)
         view.addSubview(playAgainButton)
         

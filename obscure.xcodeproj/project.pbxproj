@@ -431,6 +431,7 @@
 				014C8A8A1A26690000BF43AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		014C8A8B1A26690000BF43AA /* Build configuration list for PBXNativeTarget "obscureTests" */ = {
 			isa = XCConfigurationList;
@@ -439,6 +440,7 @@
 				014C8A8D1A26690000BF43AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
