@@ -28,14 +28,8 @@ class YouWin: SKScene {
         let panRecognizer = UIPanGestureRecognizer(target: self, action: Selector("pan:"))
         self.view?.addGestureRecognizer(panRecognizer)
         self.backgroundColor = sceneBackgroundColor
-        
-
 
         println("userData:\(self.userData)")
-        
-        
-        
-        
         
 //        backgroundNode.size = self.size
 //        backgroundNode.name = "backgroundNode"
@@ -57,14 +51,15 @@ class YouWin: SKScene {
         
         let timer = SKLabelNode(fontNamed: "ArialRoundedMTBold")
         timer.text = self.userData?.objectForKey("timer")! as String
-        timer.position = CGPointMakeCGPointMake(self.frame.midX-40,self.frame.midY-100)
+        timer.position = CGPointMake(self.frame.width-140,self.frame.midY-100)
         timer.fontColor = UIColor.whiteColor()
         timer.fontSize = 60.0
         self.addChild(timer)
         
         let numberOfGuesses = SKLabelNode(fontNamed: "ArialRoundedMTBold")
-        numberOfGuesses.text = self.userData?.objectForKey("plays")?.count
-        numberOfGuesses.position = CGPointMakeCGPointMake(self.frame.midX+40,self.frame.midY-100)
+        var guessCountArray = self.userData?.objectForKey("plays") as [SKSpriteNode]
+        numberOfGuesses.text = String(guessCountArray.count)
+        numberOfGuesses.position = CGPointMake(140,self.frame.midY-100)
         numberOfGuesses.fontColor = UIColor.whiteColor()
         numberOfGuesses.fontSize = 60.0
         self.addChild(numberOfGuesses)
@@ -84,15 +79,16 @@ class YouWin: SKScene {
         
         
         var playAgainButton = MenuButton(frame: CGRect(x:(view.frame.width-200)/2,y:view.frame.height/2+200,width:200,height:40))
-        playAgainButton.setTitle("Again", forState: .Normal)
+        playAgainButton.setTitle("Play Again", forState: .Normal)
         playAgainButton.alpha = 0.8
         playAgainButton.addTarget(self, action: Selector("pvpButtonPressed:"), forControlEvents: .TouchUpInside)
         view.addSubview(playAgainButton)
         
-//        var defineButton = MenuButton(frame: CGRect(x:(view.frame.width-200)/2,y:view.frame.height/2+100,width:200,height:40))
-//        defineButton.setTitle("Define", forState: .Normal)
-//        defineButton.addTarget(self, action: Selector("defineButtonPressed:"), forControlEvents: .TouchUpInside)
-//        view.addSubview(defineButton)
+        var defineButton = MenuButton(frame: CGRect(x:(view.frame.width-200)/2,y:view.frame.height/2+100,width:200,height:40))
+        defineButton.setTitle("Define", forState: .Normal)
+        
+        defineButton.addTarget(self, action: Selector("defineButtonPressed:"), forControlEvents: .TouchUpInside)
+        view.addSubview(defineButton)
     }
     
     func pan(recognizer:UIPanGestureRecognizer){
@@ -108,11 +104,15 @@ class YouWin: SKScene {
         for subview in self.view?.subviews as [UIView] {
             subview.removeFromSuperview()
         }
-        self.view?.presentScene(GameScene(), transition: SKTransition.crossFadeWithDuration(1))
+        self.view?.presentScene(GameScene(), transition: SKTransition.crossFadeWithDuration(0.2))
     }
     
     func defineButtonPressed(sender: MenuButton){
-        var vc = GameViewController()
+        
+        let vc = self.view!.window!.rootViewController! as GameViewController
+      //  [self.view.window.rootViewController openTweetSheet];
+        
+      //  var vc = GameViewController()
         vc.passcode = theWordText
         vc.defineWord()
     }

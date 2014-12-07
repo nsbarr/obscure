@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "014C8A641A26690000BF43AA"
-               BuildableName = "obscure.app"
-               BlueprintName = "obscure"
-               ReferencedContainer = "container:obscure.xcodeproj">
+               BuildableName = "MasterPass.app"
+               BlueprintName = "MasterPass"
+               ReferencedContainer = "container:MasterPass.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "014C8A7D1A26690000BF43AA"
-               BuildableName = "obscureTests.xctest"
-               BlueprintName = "obscureTests"
-               ReferencedContainer = "container:obscure.xcodeproj">
+               BuildableName = "MasterPassTests.xctest"
+               BlueprintName = "MasterPassTests"
+               ReferencedContainer = "container:MasterPass.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "014C8A7D1A26690000BF43AA"
-               BuildableName = "obscureTests.xctest"
-               BlueprintName = "obscureTests"
-               ReferencedContainer = "container:obscure.xcodeproj">
+               BuildableName = "MasterPassTests.xctest"
+               BlueprintName = "MasterPassTests"
+               ReferencedContainer = "container:MasterPass.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "014C8A641A26690000BF43AA"
-            BuildableName = "obscure.app"
-            BlueprintName = "obscure"
-            ReferencedContainer = "container:obscure.xcodeproj">
+            BuildableName = "MasterPass.app"
+            BlueprintName = "MasterPass"
+            ReferencedContainer = "container:MasterPass.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "014C8A641A26690000BF43AA"
-            BuildableName = "obscure.app"
-            BlueprintName = "obscure"
-            ReferencedContainer = "container:obscure.xcodeproj">
+            BuildableName = "MasterPass.app"
+            BlueprintName = "MasterPass"
+            ReferencedContainer = "container:MasterPass.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "014C8A641A26690000BF43AA"
-            BuildableName = "obscure.app"
-            BlueprintName = "obscure"
-            ReferencedContainer = "container:obscure.xcodeproj">
+            BuildableName = "MasterPass.app"
+            BlueprintName = "MasterPass"
+            ReferencedContainer = "container:MasterPass.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

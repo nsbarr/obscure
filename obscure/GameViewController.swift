@@ -37,8 +37,8 @@ class GameViewController: UIViewController {
         if let scene = GameScene.unarchiveFromFile("GameScene") as? GameScene {
             // Configure the view.
             let skView = self.view as SKView
-            skView.showsFPS = true
-            skView.showsNodeCount = true
+            skView.showsFPS = false
+            skView.showsNodeCount = false
             scene.size = CGSizeMake(750,1334)
             /* Sprite Kit applies additional optimizations to improve rendering performance */
             skView.ignoresSiblingOrder = true
@@ -80,8 +80,8 @@ class GameViewController: UIViewController {
     
     func defineWord() {
         println(passcode)
-//        let skView = self.view as SKView
-//        let reference = UIReferenceLibraryViewController(term: passcode)
-//        self.presentViewController(reference, animated: true, completion:nil)
+        let skView = self.view as SKView
+        let reference = UIReferenceLibraryViewController(term: passcode)
+        self.presentViewController(reference, animated: true, completion:nil)
     }
 }

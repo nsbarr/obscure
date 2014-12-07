@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		010E8E891A2E839B00D54A2D /* mp.png in Resources */ = {isa = PBXBuildFile; fileRef = 010E8E881A2E839B00D54A2D /* mp.png */; };
 		014C8A6B1A26690000BF43AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014C8A6A1A26690000BF43AA /* AppDelegate.swift */; };
 		014C8A6D1A26690000BF43AA /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 014C8A6C1A26690000BF43AA /* GameScene.sks */; };
 		014C8A6F1A26690000BF43AA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014C8A6E1A26690000BF43AA /* GameScene.swift */; };
@@ -14,11 +15,11 @@
 		014C8A741A26690000BF43AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 014C8A721A26690000BF43AA /* Main.storyboard */; };
 		014C8A761A26690000BF43AA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 014C8A751A26690000BF43AA /* Images.xcassets */; };
 		014C8A791A26690000BF43AA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 014C8A771A26690000BF43AA /* LaunchScreen.xib */; };
-		014C8A851A26690000BF43AA /* obscureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014C8A841A26690000BF43AA /* obscureTests.swift */; };
 		014C8A8F1A27747300BF43AA /* YouWin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014C8A8E1A27747300BF43AA /* YouWin.swift */; };
 		014C8A911A27888B00BF43AA /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014C8A901A27888B00BF43AA /* GameBoard.swift */; };
 		014C8A931A278B0700BF43AA /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014C8A921A278B0700BF43AA /* MenuButton.swift */; };
 		014C8A951A27DDA300BF43AA /* everyfourletterword.txt in Resources */ = {isa = PBXBuildFile; fileRef = 014C8A941A27DDA300BF43AA /* everyfourletterword.txt */; };
+		019D6B141A350CD400EBCFAE /* obscureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014C8A841A26690000BF43AA /* obscureTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +33,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		014C8A651A26690000BF43AA /* obscure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = obscure.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		010E8E881A2E839B00D54A2D /* mp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mp.png; sourceTree = "<group>"; };
+		014C8A651A26690000BF43AA /* MasterPass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MasterPass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		014C8A691A26690000BF43AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		014C8A6A1A26690000BF43AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		014C8A6C1A26690000BF43AA /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -41,7 +43,7 @@
 		014C8A731A26690000BF43AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		014C8A751A26690000BF43AA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		014C8A781A26690000BF43AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		014C8A7E1A26690000BF43AA /* obscureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = obscureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		014C8A7E1A26690000BF43AA /* MasterPassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MasterPassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		014C8A831A26690000BF43AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		014C8A841A26690000BF43AA /* obscureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = obscureTests.swift; sourceTree = "<group>"; };
 		014C8A8E1A27747300BF43AA /* YouWin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouWin.swift; sourceTree = "<group>"; };
@@ -80,8 +82,8 @@
 		014C8A661A26690000BF43AA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				014C8A651A26690000BF43AA /* obscure.app */,
-				014C8A7E1A26690000BF43AA /* obscureTests.xctest */,
+				014C8A651A26690000BF43AA /* MasterPass.app */,
+				014C8A7E1A26690000BF43AA /* MasterPassTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,6 +97,7 @@
 				014C8A8E1A27747300BF43AA /* YouWin.swift */,
 				014C8A901A27888B00BF43AA /* GameBoard.swift */,
 				014C8A921A278B0700BF43AA /* MenuButton.swift */,
+				010E8E881A2E839B00D54A2D /* mp.png */,
 				014C8A941A27DDA300BF43AA /* everyfourletterword.txt */,
 				014C8A701A26690000BF43AA /* GameViewController.swift */,
 				014C8A721A26690000BF43AA /* Main.storyboard */,
@@ -133,9 +136,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		014C8A641A26690000BF43AA /* obscure */ = {
+		014C8A641A26690000BF43AA /* MasterPass */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 014C8A881A26690000BF43AA /* Build configuration list for PBXNativeTarget "obscure" */;
+			buildConfigurationList = 014C8A881A26690000BF43AA /* Build configuration list for PBXNativeTarget "MasterPass" */;
 			buildPhases = (
 				014C8A611A26690000BF43AA /* Sources */,
 				014C8A621A26690000BF43AA /* Frameworks */,
@@ -145,14 +148,14 @@
 			);
 			dependencies = (
 			);
-			name = obscure;
+			name = MasterPass;
 			productName = obscure;
-			productReference = 014C8A651A26690000BF43AA /* obscure.app */;
+			productReference = 014C8A651A26690000BF43AA /* MasterPass.app */;
 			productType = "com.apple.product-type.application";
 		};
-		014C8A7D1A26690000BF43AA /* obscureTests */ = {
+		014C8A7D1A26690000BF43AA /* MasterPassTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 014C8A8B1A26690000BF43AA /* Build configuration list for PBXNativeTarget "obscureTests" */;
+			buildConfigurationList = 014C8A8B1A26690000BF43AA /* Build configuration list for PBXNativeTarget "MasterPassTests" */;
 			buildPhases = (
 				014C8A7A1A26690000BF43AA /* Sources */,
 				014C8A7B1A26690000BF43AA /* Frameworks */,
@@ -163,9 +166,9 @@
 			dependencies = (
 				014C8A801A26690000BF43AA /* PBXTargetDependency */,
 			);
-			name = obscureTests;
+			name = MasterPassTests;
 			productName = obscureTests;
-			productReference = 014C8A7E1A26690000BF43AA /* obscureTests.xctest */;
+			productReference = 014C8A7E1A26690000BF43AA /* MasterPassTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -186,7 +189,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 014C8A601A26690000BF43AA /* Build configuration list for PBXProject "obscure" */;
+			buildConfigurationList = 014C8A601A26690000BF43AA /* Build configuration list for PBXProject "MasterPass" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -199,8 +202,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				014C8A641A26690000BF43AA /* obscure */,
-				014C8A7D1A26690000BF43AA /* obscureTests */,
+				014C8A641A26690000BF43AA /* MasterPass */,
+				014C8A7D1A26690000BF43AA /* MasterPassTests */,
 			);
 		};
 /* End PBXProject section */
@@ -214,6 +217,7 @@
 				014C8A761A26690000BF43AA /* Images.xcassets in Resources */,
 				014C8A6D1A26690000BF43AA /* GameScene.sks in Resources */,
 				014C8A741A26690000BF43AA /* Main.storyboard in Resources */,
+				010E8E891A2E839B00D54A2D /* mp.png in Resources */,
 				014C8A951A27DDA300BF43AA /* everyfourletterword.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,7 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				014C8A851A26690000BF43AA /* obscureTests.swift in Sources */,
+				019D6B141A350CD400EBCFAE /* obscureTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,7 +258,7 @@
 /* Begin PBXTargetDependency section */
 		014C8A801A26690000BF43AA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 014C8A641A26690000BF43AA /* obscure */;
+			target = 014C8A641A26690000BF43AA /* MasterPass */;
 			targetProxy = 014C8A7F1A26690000BF43AA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -313,7 +317,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -350,7 +354,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -363,8 +367,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = obscure/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MasterPass;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -373,8 +379,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = obscure/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MasterPass;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -392,8 +400,8 @@
 				);
 				INFOPLIST_FILE = obscureTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/obscure.app/obscure";
+				PRODUCT_NAME = MasterPassTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MasterPass.app/obscure";
 			};
 			name = Debug;
 		};
@@ -407,15 +415,15 @@
 				);
 				INFOPLIST_FILE = obscureTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/obscure.app/obscure";
+				PRODUCT_NAME = MasterPassTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MasterPass.app/obscure";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		014C8A601A26690000BF43AA /* Build configuration list for PBXProject "obscure" */ = {
+		014C8A601A26690000BF43AA /* Build configuration list for PBXProject "MasterPass" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				014C8A861A26690000BF43AA /* Debug */,
@@ -424,7 +432,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		014C8A881A26690000BF43AA /* Build configuration list for PBXNativeTarget "obscure" */ = {
+		014C8A881A26690000BF43AA /* Build configuration list for PBXNativeTarget "MasterPass" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				014C8A891A26690000BF43AA /* Debug */,
@@ -433,7 +441,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		014C8A8B1A26690000BF43AA /* Build configuration list for PBXNativeTarget "obscureTests" */ = {
+		014C8A8B1A26690000BF43AA /* Build configuration list for PBXNativeTarget "MasterPassTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				014C8A8C1A26690000BF43AA /* Debug */,

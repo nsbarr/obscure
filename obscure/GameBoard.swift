@@ -73,6 +73,13 @@ class GameBoard: SKScene {
             println("multiplayer mode")
             self.generateKeyboard()
             self.generateSubmitButtonWithText("Create")
+            let someText = SKLabelNode(text: "Set the Password!")
+            someText.fontSize = 60.0
+            someText.color = tileColor
+            someText.name = "SetPassword"
+            someText.fontName = tileFontName
+            someText.position = CGPointMake(self.frame.midX,self.frame.midY+200)
+            self.addChild(someText)
             //add "Create MasterPass" text
             
         }
@@ -98,6 +105,8 @@ class GameBoard: SKScene {
         }
         
     }
+    
+    
     func generateSubmitButtonWithText(text:String){
         let submitButton = SKSpriteNode(color: sceneBackgroundColor, size:CGSizeMake(tileWidth*2+tileSpacing,tileHeight))
         submitButton.position = CGPoint(x: self.frame.width-(submitButton.size.width/2+gutterSpacing), y: gutterSpacing+submitButton.size.height/2)
@@ -366,6 +375,7 @@ class GameBoard: SKScene {
                 vc.passcode = theWord
                 self.throwMessageWithText("Saved! Now pass it to a friend.")
                 self.childNodeWithName("Create")?.removeFromParent()
+                self.childNodeWithName("SetPassword")?.removeFromParent()
                 self.generateSubmitButtonWithText("Guess")
                 self.generateTimer()
             }

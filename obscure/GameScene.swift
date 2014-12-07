@@ -29,6 +29,11 @@ class GameScene: SKScene {
         multiplayerButton.tag = 2
         multiplayerButton.addTarget(self, action: Selector("buttonPressed:"), forControlEvents: .TouchUpInside)
         view.addSubview(multiplayerButton)
+        
+        var masterpassLogo = UIImage(named: "mp.png")
+        let logoArea = UIImageView(frame: CGRect(x:(view.frame.width-256)/2,y:view.frame.height/2-250,width:256,height:125))
+        logoArea.image = masterpassLogo
+        view.addSubview(logoArea)
     }
     
 
