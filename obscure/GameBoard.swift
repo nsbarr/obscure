@@ -45,8 +45,9 @@ class GameBoard: SKScene {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         
-        self.scaleMode = .AspectFill
+        self.scaleMode = .AspectFit
         self.size = CGSizeMake(750,1334)
+        println(UIScreen.mainScreen().bounds.size)
         self.backgroundColor = tileFontColor
         println(self.size)
         tileWidth = (self.size.width - gutterSpacing*2.0 - tileSpacing*5)/6
