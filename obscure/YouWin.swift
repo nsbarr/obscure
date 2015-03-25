@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import Social
 import SpriteKit
 
 class YouWin: SKScene {
@@ -16,6 +16,7 @@ class YouWin: SKScene {
     var theWordText = String()
     var backgroundNode = SKSpriteNode()
     let sceneBackgroundColor = UIColor(red: 24/255, green: 18/255, blue: 28/255, alpha: 1)
+    var timerText = String()
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -44,14 +45,15 @@ class YouWin: SKScene {
         let theWord = SKLabelNode(fontNamed: "ArialRoundedMTBold")
         theWord.text = self.userData?.objectForKey("word")! as String
         theWordText = theWord.text
-        theWord.position = CGPointMake(self.frame.midX,self.frame.midY)
+        theWord.position = CGPointMake(self.frame.midX,self.frame.midY+100)
         theWord.fontColor = UIColor.whiteColor()
         theWord.fontSize = 80.0
         self.addChild(theWord)
         
         let timer = SKLabelNode(fontNamed: "ArialRoundedMTBold")
         timer.text = self.userData?.objectForKey("timer")! as String
-        timer.position = CGPointMake(self.frame.width-140,self.frame.midY-100)
+        timerText = timer.text
+        timer.position = CGPointMake(self.frame.width-140,self.frame.midY)
         timer.fontColor = UIColor.whiteColor()
         timer.fontSize = 60.0
         self.addChild(timer)
@@ -59,7 +61,7 @@ class YouWin: SKScene {
         let numberOfGuesses = SKLabelNode(fontNamed: "ArialRoundedMTBold")
         var guessCountArray = self.userData?.objectForKey("plays") as [SKSpriteNode]
         numberOfGuesses.text = String(guessCountArray.count)
-        numberOfGuesses.position = CGPointMake(140,self.frame.midY-100)
+        numberOfGuesses.position = CGPointMake(140,self.frame.midY)
         numberOfGuesses.fontColor = UIColor.whiteColor()
         numberOfGuesses.fontSize = 60.0
         self.addChild(numberOfGuesses)
@@ -78,17 +80,24 @@ class YouWin: SKScene {
 //        }
         
         
-        var playAgainButton = MenuButton(frame: CGRect(x:(view.frame.width-200)/2,y:view.frame.height/2+200,width:200,height:40))
+        var playAgainButton = MenuButton(frame: CGRect(x:(view.frame.width-200)/2,y:view.frame.height/2+120,width:200,height:40))
         playAgainButton.setTitle("Play Again", forState: .Normal)
-        playAgainButton.alpha = 0.8
         playAgainButton.addTarget(self, action: Selector("pvpButtonPressed:"), forControlEvents: .TouchUpInside)
         view.addSubview(playAgainButton)
         
-        var defineButton = MenuButton(frame: CGRect(x:(view.frame.width-200)/2,y:view.frame.height/2+100,width:200,height:40))
+        var defineButton = MenuButton(frame: CGRect(x:(view.frame.width-200)/2,y:view.frame.height/2+50,width:200,height:40))
         defineButton.setTitle("Define", forState: .Normal)
-        
         defineButton.addTarget(self, action: Selector("defineButtonPressed:"), forControlEvents: .TouchUpInside)
         view.addSubview(defineButton)
+
+        
+        var tweetButton = MenuButton(frame: CGRect(x:(view.frame.width-200)/2,y:view.frame.height/2+190,width:200,height:40))
+        tweetButton.setTitle("Tweet It", forState: .Normal)
+        tweetButton.addTarget(self, action: Selector("tweetButtonPressed:"), forControlEvents: .TouchUpInside)
+        view.addSubview(tweetButton)
+        
+        
+        //TODO: Add Tweet It Button
     }
     
     func pan(recognizer:UIPanGestureRecognizer){
@@ -105,6 +114,21 @@ class YouWin: SKScene {
             subview.removeFromSuperview()
         }
         self.view?.presentScene(GameScene(), transition: SKTransition.crossFadeWithDuration(0.2))
+    }
+    
+    func tweetButtonPressed(sender: MenuButton){
+        
+        let vc = self.view!.window!.rootViewController! as GameViewController
+        
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
+            var twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+            twitterSheet.setInitialText("I guessed the MasterPass in \(timerText). It was \(theWordText). Think you can do better? http://www.nsbarr.com/masterpass")
+            vc.presentViewController(twitterSheet, animated: true, completion: nil)
+        } else {
+            var alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            vc.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     func defineButtonPressed(sender: MenuButton){
